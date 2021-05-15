@@ -1,3 +1,8 @@
 .Cell-piece {
     font-size: 2vw;
 }
+
+.Cell {
+    height: 8vh;
+    width: 33%;
+}
