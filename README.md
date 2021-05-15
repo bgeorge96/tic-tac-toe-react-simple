@@ -1,3 +1,39 @@
+# Tic-Tac-Toe
+
+This is a sample project to get an idea of what is needed to get an application started with react and how to 
+get started with the testing libraries. 
+
+## Helpful links
+- Ideology around the different queries that are available in the react testing libaries: https://testing-library.com/docs/queries/about#priority
+- Helpful cheatsheet of how to get started with testing: https://testing-library.com/docs/react-testing-library/cheatsheet/
+    - This page also includes a very helpful printable cheatsheet that is a single page at: https://github.com/testing-library/react-testing-library/raw/main/other/cheat-sheet.pdf
+    - The docs do a good job trying to call out when the application is using async vs sync code for using the await keyword.
+
+## Gotchas
+Angular provides a function on the root testing component to refresh the UI. This is available in the react application, but is a bit hidden
+in the API. I was able to find a way to rerender with the following code:
+```javascript
+import {fireEvent, render, screen} from "@testing-library/react";
+import {TicTacToe} from "./TicTacToe";
+
+currentPiece = "First Move";
+onPlacement = jest.fn();
+// initial render would be an empty board
+const {rerender} =  render(<TicTacToe onPlacement={onPlacement} currentPiece={currentPiece}/>);
+
+// user selecting cell 1 from the board
+let cells = await screen.findAllByRole('cell');
+fireEvent.click(cells[0]);
+
+// re-rendering to update the UI with the player selection
+rerender(<TicTacToe onPlacement={onPlacement} currentPiece={currentPiece} />)
+
+// searching for text and applying assertion
+await screen.findByText(/first move/i);
+```
+
+---
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
