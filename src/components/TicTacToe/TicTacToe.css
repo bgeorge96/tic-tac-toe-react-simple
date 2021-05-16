@@ -1,5 +1,5 @@
-.TicTacToe-table {
-    width: 100%;
-    height: 100%;
-    border-collapse: collapse;
+.TicTacToe {
+  text-align: center;
+  width: 100%;
+  height: 100%;
 }

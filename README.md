@@ -14,19 +14,19 @@ Angular provides a function on the root testing component to refresh the UI. Thi
 in the API. I was able to find a way to rerender with the following code:
 ```javascript
 import {fireEvent, render, screen} from "@testing-library/react";
-import {TicTacToe} from "./TicTacToe";
+import {Board} from "./Board";
 
 currentPiece = "First Move";
 onPlacement = jest.fn();
 // initial render would be an empty board
-const {rerender} =  render(<TicTacToe onPlacement={onPlacement} currentPiece={currentPiece}/>);
+const {rerender} =  render(<Board onPlacement={onPlacement} currentPiece={currentPiece}/>);
 
 // user selecting cell 1 from the board
 let cells = await screen.findAllByRole('cell');
 fireEvent.click(cells[0]);
 
 // re-rendering to update the UI with the player selection
-rerender(<TicTacToe onPlacement={onPlacement} currentPiece={currentPiece} />)
+rerender(<Board onPlacement={onPlacement} currentPiece={currentPiece} />)
 
 // searching for text and applying assertion
 await screen.findByText(/first move/i);
@@ -34,9 +34,9 @@ await screen.findByText(/first move/i);
 
 ---
 
-# Getting Started with Create React App
+# Getting Started with Create React TicTacToe
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with [Create React TicTacToe](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
@@ -77,7 +77,7 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 ## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+You can learn more in the [Create React TicTacToe documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 
@@ -89,7 +89,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/c
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
+### Making a Progressive Web TicTacToe
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 

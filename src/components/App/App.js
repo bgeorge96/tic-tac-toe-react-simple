@@ -1,30 +1,29 @@
-import './App.css';
-import {TicTacToe} from '../TicTacToe/TicTacToe';
-import {useState} from "react";
+import {BrowserRouter as Router, Route, Switch, Link} from "react-router-dom";
+import TicTacToe from "../TicTacToe/TicTacToe";
 
-function App() {
-    let [player, setPlayer] = useState(1);
-    let [playerChar, setPlayerCharacter] = useState("X");
-    let [isWinner, setWinner] = useState(false);
-    const updatePlayer = () => {
-        setPlayer((prevState) => (prevState % 2) + 1)
-        setPlayerCharacter((prevState) => prevState === "X" ? "O" : "X")
-    }
-    const continueGame = <h3>It is player {player}'s turn, using character: {playerChar}</h3>;
-    const declareWinner = <h3>Congratulations to player {player} for winning the game!</h3>;
-
+export default function App() {
     return (
-        <div className="App">
-            <h2>TicTacToe</h2>
-            {isWinner ? declareWinner : continueGame}
-            <TicTacToe onWin={() => setWinner(true)} onPlacement={() =>
-                isWinner ?
-                    {} :
-                    updatePlayer()} currentPiece={playerChar}
-            />
-        </div>
-    );
+        <Router>
+            <div>
+                <nav>
+                    <ul>
+                        <li><Link to={"/"}>Home</Link></li>
+                        <li><Link to={"/game"}>Game</Link></li>
+                        <li><Link to={"/about"}>About</Link></li>
+                    </ul>
+                </nav>
+                <Switch>
+                    <Route path={"/game"}>
+                        <TicTacToe />
+                    </Route>
+                    <Route path={"/about"}>
+                        <h2>About</h2>
+                    </Route>
+                    <Route path={"/"}>
+                        <h2>Home</h2>
+                    </Route>
+                </Switch>
+            </div>
+        </Router>
+    )
 }
-
-
-export default App;

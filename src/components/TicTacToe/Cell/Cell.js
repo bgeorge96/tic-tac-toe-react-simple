@@ -1,5 +1,5 @@
 import './Cell.css';
-import {commonTableStyles} from "../style";
+import {commonTableStyles} from "../../style";
 
 export function Cell({piece, clickAction}) {
     return (
