@@ -21,7 +21,7 @@ export function Board({onWin, onPlacement, currentPiece}) {
             (board[2] !== '') && (board[2] === board[4]) && (board[4] === board[6]),
         );
         //if some value is true run win callback
-        boolArray.some((value => value ? onWin() : {}));
+        return boolArray.some((value => value));
     }
 
     const placePiece = (index) => {
@@ -30,11 +30,10 @@ export function Board({onWin, onPlacement, currentPiece}) {
                 prev[index] = currentPiece;
                 return prev;
             });
-            checkWin();
-            onPlacement();
+            checkWin() ? onWin() : onPlacement();
         }
     }
-    const createCell = place => <Cell piece={board[place]} clickAction={() => placePiece(place)}/>;
+    const createCell = place => <Cell index={place} piece={board[place]} clickAction={() => placePiece(place)}/>;
 
     return (
         <div className="Board">
