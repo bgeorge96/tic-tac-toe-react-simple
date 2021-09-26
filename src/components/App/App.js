@@ -1,7 +1,9 @@
-import {BrowserRouter as Router, Route, Switch, Link} from "react-router-dom";
+import {BrowserRouter as Router, Link, Route, Switch} from "react-router-dom";
 import TicTacToe from "../TicTacToe/TicTacToe";
 import {Provider} from "react-redux";
 import store from "../../store";
+import About from "../About/About";
+import Home from "../Home/Home";
 
 export default function App() {
     return (
@@ -20,10 +22,10 @@ export default function App() {
                             <TicTacToe/>
                         </Route>
                         <Route path={"/about"}>
-                            <h2>About</h2>
+                            <About/>
                         </Route>
                         <Route path={"/"}>
-                            <h2>Home</h2>
+                            <Home/>
                         </Route>
                     </Switch>
                 </div>
